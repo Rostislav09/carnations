@@ -1,0 +1,20 @@
+.footer {
+  background-color: #50533e;
+  color: white;
+  padding: 20px 0;
+  font-family: "tt-travel", sans-serif;
+  font-size: 10px;
+}
+
+.footer-text {
+  margin-bottom: 10px;
+}
+
+.col-md-3 {
+  flex: 1;
+  text-align: left;
+}
+
+.col-md-3.text-md-right {
+  text-align: right;
+}

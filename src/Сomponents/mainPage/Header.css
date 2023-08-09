@@ -1,0 +1,51 @@
+.headerContainer {
+  margin-top: 20px;
+}
+
+.logoStart {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  max-width: 100%;
+}
+
+.buttonEnd {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.buttonEnd button {
+  width: 150px;
+  height: 50px;
+  background: none;
+  border: solid 1px black;
+  outline: none;
+  color: black;
+  font-size: 16px;
+}
+
+.login:hover {
+  background-color: #50533E; 
+  color: white; 
+  border:none;
+}
+
+
+@media (max-width: 768px) {
+  .logoStart {
+    display: block;
+  }
+  .buttonEnd {
+    display: block;
+  }
+  .buttonEnd button {
+    width: 120px;
+    height: 40px;
+    font-size: 14px; 
+    margin-top: 20px;
+  }
+
+}

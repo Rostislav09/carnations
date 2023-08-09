@@ -1,0 +1,33 @@
+.headerContainer {
+    margin-top: 0px;
+}
+  
+.headerContainer .logoStart  {
+    margin-top: 10px;
+}
+
+.headerContainer .buttonEnd  {
+    margin-top: 10px;
+}
+
+ a.btn.active {
+    background-color: #50533E; 
+    color: white;
+} 
+
+.user-icon {
+    width: 24px; 
+    height: 24px; 
+    margin-right: 5px; 
+  }
+
+  @media (max-width: 767px) {
+    .headerContainer {
+      text-align: center; 
+    }
+  
+    .headerContainer .logoStart,
+    .headerContainer .buttonEnd {
+      margin-top: 10px; 
+    }
+  }
