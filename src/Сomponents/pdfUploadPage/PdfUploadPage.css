@@ -1,61 +1,129 @@
-/* src/Сomponents/pdfUploadPage/PDFUploadPage.css */
 .pdf-upload-page {
-  /* background-color: #f4f4f4; */
+  display: flex;
   height: 100vh;
 }
 
-.pdf-upload-page .btn-lg {
-  margin: 283px auto;
+.sidebar {
+  width: 250px; /* Ширина сайдбара */
+  padding: 20px; /* Отступы внутри сайдбара */
 }
 
-.pdf-upload-page .btn-lg:hover {
-  background-color: #50533E;
-  border-color: #50533E;
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto; /* Включаем вертикальную прокрутку при необходимости */
+}
+
+.headerContainer {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerContainer a.btn {
+  text-decoration: none;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.headerContainer a.btn.active {
+  background-color: #50533e;
   color: white;
 }
 
- .headerPdf {
-    height: 85px;
-    background: #E9DFCA;
-    
- }
+.user-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+}
 
- /* src/Сomponents/pdfUploadPage/PDFUploadPage.css */
-.pdf-upload-page {
-  /* background-color: #f4f4f4; */
+.file-input-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.btn-unloading {
+  border: 1px solid black;
+  margin-top: 20px;
+  background-color: #f0f0f0 !important;
+}
+
+.file-info {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.file-input-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.file-info {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
 }
 
-.pdf-upload-page .btn-lg {
-  margin: 283px auto;
-}
-
- 
-.headerPdf {
-  height: 85px;
-  background: #e9dfca;
+.file-upload-container {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 430px;
 }
 
 .file-input-label {
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
+  display: block;
 }
 
-.file-input {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
+@media (max-width: 950px) {
+  .file-upload-container {
+    margin-left: 270px; /* Ширина сайдбара + его padding */
+  }
 }
 
- 
 @media (max-width: 767px) {
+  .pdf-upload-page {
+    flex-direction: column;
+  }
 
-  .headerPdf {
-    height: 130px;
+  .sidebar {
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  .headerContainer {
+    flex-direction: column; /* Столбцовая компоновка для мобильных */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .file-upload-container {
+    margin-left: 0;
   }
 }

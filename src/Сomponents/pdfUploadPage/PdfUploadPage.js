@@ -1,16 +1,33 @@
-// src/Сomponents/pdfUploadPage/PDFUploadPage.js
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Sidebar from "../Sidebar/Sidebar";
 import pdflogo from "../../resources/pdf/download.png";
 import "./PdfUploadPage.css";
-import HeaderPdf from "./HeaderPdf";
-import Footer from "./Footer";
-import { useState } from "react";
 
 const PDFUploadPage = () => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [uploadedFileName, setUploadedFileName] = useState(null);
+  const [isFileUploaded, setIsFileUploaded] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleButtonClick = async () => {
+    await handleFileUpload(); // Вызываем handleFileUpload
+    handleSendClick(); // Вызываем handleSendClick
+  };
+
+  const handleSendClick = () => {
+    // Обработчик для кнопки "Send"
+    // Вставьте здесь код для отправки файла и измените состояние isFileUploaded
+    // Например:
+    // отправить файл и при успешной отправке:
+    setIsFileUploaded(true);
+    navigate("/unloading"); // Перенаправляем пользователя на страницу Unloading
+  };
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
+    setUploadedFileName(event.target.files[0]?.name || null);
   };
 
   const handleFileUpload = async () => {
@@ -37,30 +54,35 @@ const PDFUploadPage = () => {
 
   return (
     <div className="pdf-upload-page">
-      <div className="headerPdf">
-        <HeaderPdf />
-      </div>
-
-      <div className="container">
-        <div className="row justify-content-center mt-5">
-          <div className="col-md-6 text-center">
+      <Sidebar />
+      <div className="content">
+        <div className="centered-container">
+          <div className="file-upload-container">
             <label className="file-input-label">
-              <input
-                type="file"
-                accept=".pdf"
-                onChange={handleFileChange}
-                className="file-input"
-              />
-              <button className="btn btn-lg" onClick={handleFileUpload}>
-                <p>ADD PDF</p>
-                <img src={pdflogo} alt="download" />
+              <div className="file-input-container">
+                <input
+                  type="file"
+                  accept=".pdf"
+                  onChange={handleFileChange}
+                  className="file-input"
+                />
+                <img src={pdflogo} alt="download" className="file-input-icon" />
+              </div>
+              {uploadedFileName && (
+                <div className="file-info">
+                  <p>Uploaded: {uploadedFileName}</p>
+                </div>
+              )}
+              <button
+                className="btn btn-lg btn-unloading"
+                onClick={handleButtonClick}
+              >
+                Send
               </button>
             </label>
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 };

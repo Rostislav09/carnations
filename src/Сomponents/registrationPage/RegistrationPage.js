@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "./RegistrationPage.css";
-import logo from "../../resources/mainpage/logo.png";
+import logo from "../../resources/mainpage/logo@2x.png";
 import { Link } from "react-router-dom";
-
-
 
 const RegistrationPage = ({ onRegistration }) => {
   const [username, setUsername] = useState("");
@@ -11,11 +9,6 @@ const RegistrationPage = ({ onRegistration }) => {
   const [isRegistered, setIsRegistered] = useState(false);
 
   const handleRegistration = () => {
-    // Простая проверка на фронтенде перед отправкой данных
-    if (!username || !password) {
-      alert("Please fill in both username and password.");
-      return;
-    }
     // Простая имитация регистрации
     // запрос к серверу для регистрации
     // Вместо console.log можно выполнять необходимые действия, например, отправку данных на сервер
@@ -30,15 +23,18 @@ const RegistrationPage = ({ onRegistration }) => {
 
   if (isRegistered) {
     return (
-      
       <div className="registration-page">
         <div className="container h-100">
           <div className="row h-100 align-items-center justify-content-center">
             <div className="col-md-4">
               <div className="registration-form">
-              <Link className="back-button" to="/">Back</Link>
-                <p>Registration Successful!</p>
-                <Link className="work-link-beforeRegistration" to="/pdfuploadpage">Let's work!</Link>
+                <p>Login Successful!</p>
+                <Link
+                  className="work-link-beforeRegistration"
+                  to="/pdfuploadpage"
+                >
+                  Let's work!
+                </Link>
               </div>
             </div>
           </div>
@@ -49,7 +45,6 @@ const RegistrationPage = ({ onRegistration }) => {
 
   return (
     <div className="registration-page">
-      <Link className="back-button" to="/">Back</Link>
       <div className="container h-100">
         <div className="row h-100 align-items-center justify-content-center">
           <div className="col-md-4">
@@ -71,9 +66,6 @@ const RegistrationPage = ({ onRegistration }) => {
                 <button className="btn btn-login" onClick={handleRegistration}>
                   LOG IN
                 </button>
-                <button className="btn btn-link btn-forgot">
-                  Forgot your password?
-                </button>
               </form>
             </div>
           </div>
@@ -84,4 +76,3 @@ const RegistrationPage = ({ onRegistration }) => {
 };
 
 export default RegistrationPage;
-
