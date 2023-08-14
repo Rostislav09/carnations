@@ -22,7 +22,7 @@ export const pdfReducer = (state = pdfInitialState, action) => {
     case PDF_UPLOAD_SUCCESS: {
       return {
         ...pdfInitialState,
-        pdfData: action.payload.data,
+        pdfData: action.payload,
         pdfUploadSuccess: true
       }
     }
