@@ -10,7 +10,7 @@ const ProtectedRoute = ({ onlyAuth = null, onlyNonAuth = null, children }) => {
   }
 
   if (onlyNonAuth && isAuth) {
-    return <Navigate to="/admin/upload" />
+    return <Navigate to="/admin/car-max/upload" />
   }
 
   return children

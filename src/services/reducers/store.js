@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-// import { pdfReducer } from './pdf'
+import { pdfReducer } from './pdf'
 import { userReducer } from './user'
 
 export const rootReducer = combineReducers({
-  // pdf: pdfReducer,
+  pdf: pdfReducer,
   user: userReducer
 })

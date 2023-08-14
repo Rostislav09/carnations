@@ -28,7 +28,7 @@ function App() {
                 <RegistrationPage/>
               </ProtectedRoute>
             }/>
-            <Route path="/admin/upload" element={
+            <Route path="/admin/car-max/upload" element={
               <ProtectedRoute onlyAuth={true}>
                 <PDFUploadPage/>
               </ProtectedRoute>

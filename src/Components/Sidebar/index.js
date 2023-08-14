@@ -22,12 +22,12 @@ const Sidebar = () => {
       </div>
       <div className="sidebar-tabs">
         <Link
-          to="/admin/upload"
+          to="/admin/car-max/upload"
           className={`btn ${
-            location.pathname === "/admin/upload" ? "active" : ""
+            location.pathname === "/admin/car-max/upload" ? "active" : ""
           }`}
         >
-          CarMax Parser
+          CarMax PDF Parser
         </Link>
         <Link
           to="/admin/export"

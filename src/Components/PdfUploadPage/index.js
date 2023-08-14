@@ -70,16 +70,16 @@ const PDFUploadPage = () => {
               </div>
               {uploadedFileName && (
                 <div className="file-info">
-                  <p>Uploaded: {uploadedFileName}</p>
+                  <p>Selected: {uploadedFileName}</p>
                 </div>
               )}
-              <button
-                className="btn btn-lg btn-unloading"
-                onClick={handleButtonClick}
-              >
-                Send
-              </button>
             </label>
+            <button
+              className="btn btn-lg btn-unloading"
+              onClick={handleButtonClick}
+            >
+              Parse
+            </button>
           </div>
         </div>
       </div>
