@@ -1,7 +1,7 @@
 import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import Sidebar from "../Sidebar/Sidebar";
-import "./UnloadingPage.css";
+import Sidebar from "../Sidebar";
+import "./style.css";
 
 const UnloadingPage = () => {
   const columns = [

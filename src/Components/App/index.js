@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import ProtectedRoute from './Components/ProtectedRoute'
-import RegistrationPage from "./Components/registrationPage/RegistrationPage";
-import PDFUploadPage from "./Components/pdfUploadPage/PdfUploadPage";
-import UnloadingPage from "./Components/unloadingPage/UnloadingPage";
+import ProtectedRoute from '../../components/ProtectedRoute'
+import RegistrationPage from "../../components/RegistrationPage";
+import PDFUploadPage from "../../components/PdfUploadPage";
+import UnloadingPage from "../../components/UnloadingPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
-import { userAuthorize } from './services/actions/user'
-import "./App.css";
+import { userAuthorize } from '../../services/actions/user'
+import "./style.css";
 
 function App() {
   const dispatch = useDispatch()

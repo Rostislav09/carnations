@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../../resources/mainpage/logo@2x.png";
 import user from "../../resources/registration/user.png";
-import "./Sidebar.css";
+import "./style.css";
 
 const Sidebar = () => {
   const location = useLocation();

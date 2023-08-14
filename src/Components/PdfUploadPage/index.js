@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../Sidebar/Sidebar";
+import Sidebar from "../Sidebar";
 import pdflogo from "../../resources/pdf/download.png";
-import "./PdfUploadPage.css";
+import "./style.css";
 
 const PDFUploadPage = () => {
   const [selectedFile, setSelectedFile] = useState(null);

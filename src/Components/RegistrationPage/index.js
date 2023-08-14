@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { userLogin } from '../../services/actions/user'
 import { useSelector, useDispatch } from 'react-redux'
-import "./RegistrationPage.css";
-import logo from "../../resources/mainpage/logo@2x.png";
 import { Link } from "react-router-dom";
+import logo from "../../resources/mainpage/logo@2x.png";
+import "./style.css";
 
 const RegistrationPage = () => {
   const dispatch = useDispatch()
