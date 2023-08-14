@@ -14,7 +14,6 @@ export function pdfUpload(formData) {
     fetch(`${API_BASE_URL}/parser/car_max`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${getCookie('accessToken')}`
       },
       body: formData
