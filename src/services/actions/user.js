@@ -50,10 +50,10 @@ export function userAuthorize() {
     }
 
     fetch(`${API_BASE_URL}/authentication/authorize`, {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        authorization: getCookie('accessToken')
+        Authorization: `Bearer ${getCookie('accessToken')}`
       }    
     })
     .then(checkResponse)

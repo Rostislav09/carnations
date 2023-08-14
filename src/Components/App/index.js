@@ -3,7 +3,7 @@ import ProtectedRoute from '../../components/ProtectedRoute'
 import RegistrationPage from "../../components/RegistrationPage";
 import PDFUploadPage from "../../components/PdfUploadPage";
 import UnloadingPage from "../../components/UnloadingPage";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import { userAuthorize } from '../../services/actions/user'
 import "./style.css";
@@ -22,6 +22,7 @@ function App() {
       {isInitRequested && (
         <Router>
           <Routes>
+            <Route path='*' element={<Navigate to={{pathname: '/'}} />} />
             <Route path="/" element={
               <ProtectedRoute onlyNonAuth={true}>
                 <RegistrationPage/>

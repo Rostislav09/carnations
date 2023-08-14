@@ -1,11 +1,19 @@
 import React from "react";
+import { userLogout } from '../../services/actions/user'
 import { Link, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
 import logo from "../../resources/mainpage/logo@2x.png";
 import user from "../../resources/registration/user.png";
 import "./style.css";
 
 const Sidebar = () => {
   const location = useLocation();
+  const dispatch = useDispatch()
+
+  const handlerLogOut = (e) => {
+    e.preventDefault()
+    dispatch(userLogout())
+  }
 
   return (
     <div className="sidebar">
@@ -14,35 +22,29 @@ const Sidebar = () => {
       </div>
       <div className="sidebar-tabs">
         <Link
-          to="/"
-          className={`btn ${location.pathname === "/" ? "active" : ""}`}
-        >
-          <img className="user-icon" src={user} alt="user" />
-        </Link>
-        <Link
-          to="/pdfuploadpage"
+          to="/admin/upload"
           className={`btn ${
-            location.pathname === "/pdfuploadpage" ? "active" : ""
+            location.pathname === "/admin/upload" ? "active" : ""
           }`}
         >
-          ADD PDF
+          CarMax Parser
         </Link>
         <Link
-          to="/unloading"
+          to="/admin/export"
           className={`btn ${
-            location.pathname === "/unloading" ? "active" : ""
+            location.pathname === "/admin/export" ? "active" : ""
           }`}
         >
-          UNLOADING
+          Export PDF
         </Link>
       </div>
       <div className="sidebar-bottom">
-        <Link
-          to="/exit"
-          className={`btn ${location.pathname === "/exit" ? "active" : ""}`}
+        <div
+          className='btn'
+          onClick={handlerLogOut}
         >
-          EXIT
-        </Link>
+          Log out
+        </div>
       </div>
     </div>
   );
