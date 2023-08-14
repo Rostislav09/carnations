@@ -9,12 +9,12 @@ const RegistrationPage = () => {
   const dispatch = useDispatch()
   const { loginFailed } = useSelector(store => store.user)
 
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleRegistration = (e) => {
     e.preventDefault()
-    dispatch(userLogin({ username, password }))
+    dispatch(userLogin({ email, password }))
   }
 
   // if (isRegistered) {
@@ -49,9 +49,9 @@ const RegistrationPage = () => {
               <form>
                 <input
                   type="text"
-                  placeholder="Username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
                   type="password"
