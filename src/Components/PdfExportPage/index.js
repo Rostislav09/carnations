@@ -93,7 +93,6 @@ const PdfExportPage = () => {
         header: 'Announcements',
         accessorKey: 'announcements',
         size: 220,
-        filterFn: 'arrIncludesAll',
         filterVariant: 'multi-select',
         mantineFilterMultiSelectProps: {
           data: pdfData.options.announcements
