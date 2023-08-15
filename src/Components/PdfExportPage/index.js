@@ -1,12 +1,29 @@
 import React, { useMemo } from "react";
 import { Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
+import { Box, Button } from '@mantine/core';
+import { IconDownload } from '@tabler/icons-react';
 import { MantineReactTable, useMantineReactTable } from 'mantine-react-table';
+import { jsPDF } from 'jspdf'
+import autoTable from 'jspdf-autotable'
 import Sidebar from "../Sidebar";
 import "./style.css";
 
 const PdfExportPage = () => {
   const { pdfData } = useSelector(store => store.pdf)
+
+  const handleExportRows = (rows) => {
+    const doc = new jsPDF();
+    const tableData = rows.map((row) => Object.values(row.original));
+    const tableHeaders = columns.map((c) => c.header);
+
+    autoTable(doc, {
+      head: [tableHeaders],
+      body: tableData,
+    });
+
+    doc.save('carmax-pdf.pdf');
+  };
 
   const columns = useMemo(() => [
       {
@@ -28,7 +45,10 @@ const PdfExportPage = () => {
         header: 'Brand',
         accessorKey: 'brand',
         filterVariant: 'autocomplete',
-        size: 100
+        size: 100,
+        mantineFilterMultiSelectProps: {
+          data: pdfData.options.brands
+        }
       },
       {
         header: 'Model',
@@ -68,6 +88,11 @@ const PdfExportPage = () => {
         header: 'Options',
         accessorKey: 'options',
         size: 100
+      },
+      {
+        header: 'Announcements',
+        accessorKey: 'announcements',
+        size: 100
       }
     ], [pdfData],
   )
@@ -75,18 +100,46 @@ const PdfExportPage = () => {
   const table = useMantineReactTable({
     columns,
     data: pdfData.cars,
+    enableRowSelection: true,
     enableStickyHeader: true,
     enablePagination: false,
     mantineTableProps: {
       withColumnBorders: true,
-    },    
+    },
+    renderTopToolbarCustomActions: ({ table }) => (
+      <Box
+        sx={{
+          display: 'flex',
+          gap: '16px',
+          padding: '8px',
+          flexWrap: 'wrap',
+        }}
+      >
+        <Button
+          disabled={table.getPrePaginationRowModel().rows.length === 0}
+          //export all rows, including from the next page, (still respects filtering and sorting)
+          onClick={() =>
+            handleExportRows(table.getPrePaginationRowModel().rows)
+          }
+          leftIcon={<IconDownload />}
+          variant="filled"
+        >
+          Export All Rows
+        </Button>
+        <Button
+          disabled={
+            !table.getIsSomeRowsSelected() && !table.getIsAllRowsSelected()
+          }
+          //only export selected rows
+          onClick={() => handleExportRows(table.getSelectedRowModel().rows)}
+          leftIcon={<IconDownload />}
+          variant="filled"
+        >
+          Export Selected Rows
+        </Button>
+      </Box>
+    )
   });
-
-
-  // const handleUnloadClick = () => {
-  //   // Обработчик для кнопки "Unload"
-  //   // Вставьте здесь код для выполнения действий при нажатии на кнопку "Unload"
-  // };
 
   return (
     <div className="pdf-upload-page">
@@ -96,17 +149,6 @@ const PdfExportPage = () => {
           <h2 className="unloading-text">CarMax Table</h2>
           <div className="data-grid-container">
              <MantineReactTable table={table} />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "1rem",
-            }}
-          >
-{/*            <button onClick={handleUnloadClick} className="unload-button">
-              Export PDF
-            </button>*/}
           </div>
         </div>
       </div>

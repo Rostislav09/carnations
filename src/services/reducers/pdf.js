@@ -19,7 +19,8 @@ const pdfInitialState = {
         min: 0,
         max: 0
       },
-      colors: []
+      colors: [],
+      brands: []
     }
   }
 }
