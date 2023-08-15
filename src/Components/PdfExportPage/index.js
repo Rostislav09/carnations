@@ -43,10 +43,12 @@ const PdfExportPage = () => {
         header: 'Year',
         accessorKey: 'year',
         filterVariant: 'range-slider',
-        size: 100,
+        size: 170,
         mantineFilterRangeSliderProps: {
           min: pdfData.options.year.min,
-          max: pdfData.options.year.max
+          max: pdfData.options.year.max,
+          step: 1,
+          minRange: 0
         }
       },
       {
@@ -67,10 +69,12 @@ const PdfExportPage = () => {
         header: 'Mileage',
         accessorKey: 'mileage',
         filterVariant: 'range-slider',
-        size: 100,
+        size: 170,
         mantineFilterRangeSliderProps: {
           min: pdfData.options.mileage.min,
-          max: pdfData.options.mileage.max
+          max: pdfData.options.mileage.max,
+          step: 1,
+          minRange: 0
         }
       },
       {
