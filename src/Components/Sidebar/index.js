@@ -30,12 +30,12 @@ const Sidebar = () => {
           CarMax PDF Parser
         </Link>
         <Link
-          to="/admin/export"
+          to="/admin/car-max/export"
           className={`btn ${
-            location.pathname === "/admin/export" ? "active" : ""
+            location.pathname === "/admin/car-max/export" ? "active" : ""
           }`}
         >
-          Export PDF
+          CarMax PDF Export
         </Link>
       </div>
       <div className="sidebar-bottom">

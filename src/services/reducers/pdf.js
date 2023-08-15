@@ -8,7 +8,20 @@ const pdfInitialState = {
   pdfUploadStart: false,
   pdfUploadSuccess: false,
   pdfUploadError: false,
-  pdfData: []
+  pdfData: {
+    cars: [],
+    options: {
+      year: {
+        min: 0,
+        max: 0
+      },
+      mileage: {
+        min: 0,
+        max: 0
+      },
+      colors: []
+    }
+  }
 }
 
 export const pdfReducer = (state = pdfInitialState, action) => {

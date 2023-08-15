@@ -1,19 +1,17 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 import { pdfUpload } from '../../services/actions/pdf'
 import Sidebar from "../Sidebar";
 import pdflogo from "../../resources/pdf/download.png";
 import "./style.css";
 
-const PDFUploadPage = () => {
+const PDFImportPage = () => {
   const dispatch = useDispatch()
   const { pdfUploadStart, pdfUploadSuccess, pdfUploadError } = useSelector(store => store.pdf)
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedFileName, setUploadedFileName] = useState(null);
   const [isFileUploaded, setIsFileUploaded] = useState(false);
-
-  const navigate = useNavigate();
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -26,6 +24,16 @@ const PDFUploadPage = () => {
     formData.append("file", selectedFile);
     dispatch(pdfUpload(formData))
   };
+
+  useEffect(() => {
+    if (selectedFile && pdfUploadSuccess) {
+      setIsFileUploaded(true)
+    }
+  }, [pdfUploadSuccess])
+
+  if (isFileUploaded) {
+    return <Navigate to="/admin/car-max/export" />
+  }
 
   return (
     <div className="pdf-upload-page">
@@ -76,4 +84,4 @@ const PDFUploadPage = () => {
   );
 };
 
-export default PDFUploadPage;
+export default PDFImportPage;

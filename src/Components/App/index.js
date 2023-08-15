@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ProtectedRoute from '../../components/ProtectedRoute'
 import RegistrationPage from "../../components/RegistrationPage";
-import PDFUploadPage from "../../components/PdfUploadPage";
-import UnloadingPage from "../../components/UnloadingPage";
+import PDFImportPage from "../../components/PdfImportPage";
+import PDFExportPage from "../../components/PdfExportPage";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import { userAuthorize } from '../../services/actions/user'
@@ -30,12 +30,12 @@ function App() {
             }/>
             <Route path="/admin/car-max/upload" element={
               <ProtectedRoute onlyAuth={true}>
-                <PDFUploadPage/>
+                <PDFImportPage/>
               </ProtectedRoute>
             }/>
-            <Route path="/admin/export" element={
+            <Route path="/admin/car-max/export" element={
               <ProtectedRoute onlyAuth={true}>
-                <UnloadingPage />
+                <PDFExportPage />
               </ProtectedRoute>
             }/>
           </Routes>
