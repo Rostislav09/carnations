@@ -14,12 +14,20 @@ const PdfExportPage = () => {
 
   const handleExportRows = (rows) => {
     const doc = new jsPDF();
-    const tableData = rows.map((row) => Object.values(row.original));
-    const tableHeaders = columns.map((c) => c.header);
+    const tableHeaders = columns.map(c => c.header).filter(c => c != 'Announcements')
+    const tableData = rows.map(row => Object.values(row.original))
+    const tableRows = []
+
+    tableData.map(row => {
+      tableRows.push(row)
+      tableRows.push([{ content: `Announcements: ${row[row.length - 1]}`, colSpan: 9 }])
+    })
 
     autoTable(doc, {
+      styles: { fontSize: 7 },
+      margin: { top: 5, left: 5, right: 5, bottom: 5 },
       head: [tableHeaders],
-      body: tableData,
+      body: tableRows
     });
 
     doc.save('carmax-pdf.pdf');
