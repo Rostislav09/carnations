@@ -48,7 +48,7 @@ const PdfExportPage = () => {
       {
         header: 'Brand',
         accessorKey: 'brand',
-        filterVariant: 'autocomplete',
+        filterVariant: 'multi-select',
         size: 100,
         mantineFilterMultiSelectProps: {
           data: pdfData.options.brands
