@@ -110,6 +110,7 @@ const PdfExportPage = () => {
     data: pdfData.cars,
     enableRowSelection: true,
     enableStickyHeader: true,
+    enableColumnFilterModes: true,
     enablePagination: false,
     mantineTableProps: {
       withColumnBorders: true,
