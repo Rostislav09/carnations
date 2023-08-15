@@ -63,11 +63,7 @@ const PdfExportPage = () => {
         header: 'Mileage',
         accessorKey: 'mileage',
         filterVariant: 'range',
-        size: 250,
-        value: {
-          min: 10,
-          max: 1000
-        }
+        size: 250
       },
       {
         header: 'VIN',
