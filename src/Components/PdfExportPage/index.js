@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
-import { Box, Button } from '@mantine/core';
+import { Flex, Box, Button } from '@mantine/core';
 import { IconDownload } from '@tabler/icons-react';
 import { MantineReactTable, useMantineReactTable } from 'mantine-react-table';
 import { jsPDF } from 'jspdf'
@@ -42,14 +42,8 @@ const PdfExportPage = () => {
       {
         header: 'Year',
         accessorKey: 'year',
-        filterVariant: 'range-slider',
-        size: 170,
-        mantineFilterRangeSliderProps: {
-          min: pdfData.options.year.min,
-          max: pdfData.options.year.max,
-          step: 1,
-          minRange: 0
-        }
+        filterVariant: 'range',
+        size: 220
       },
       {
         header: 'Brand',
@@ -68,13 +62,11 @@ const PdfExportPage = () => {
       {
         header: 'Mileage',
         accessorKey: 'mileage',
-        filterVariant: 'range-slider',
-        size: 170,
-        mantineFilterRangeSliderProps: {
-          min: pdfData.options.mileage.min,
-          max: pdfData.options.mileage.max,
-          step: 1,
-          minRange: 0
+        filterVariant: 'range',
+        size: 250,
+        value: {
+          min: 10,
+          max: 1000
         }
       },
       {
@@ -104,7 +96,12 @@ const PdfExportPage = () => {
       {
         header: 'Announcements',
         accessorKey: 'announcements',
-        size: 100
+        size: 220,
+        filterFn: 'arrIncludesAll',
+        filterVariant: 'multi-select',
+        mantineFilterMultiSelectProps: {
+          data: pdfData.options.announcements
+        }
       }
     ], [pdfData],
   )
@@ -128,6 +125,23 @@ const PdfExportPage = () => {
           flexWrap: 'wrap',
         }}
       >
+        <Flex gap="md">
+          <Button onClick={() => table.setColumnFilters(prev => [...prev.filter(f => f.id !== 'year'), {
+            id: 'year',
+            value: [2008, 2018]
+          }])}>
+            Year 2008-2018
+          </Button>
+          <Button onClick={() => table.setColumnFilters(prev => [...prev.filter(f => f.id !== 'mileage'), {
+            id: 'mileage',
+            value: [60000, 150000]
+          }])}>
+            Mileage 60k-150k
+          </Button>
+          <Button onClick={() => table.resetColumnFilters()}>
+            Reset Filters
+          </Button>
+        </Flex>
         <Button
           disabled={table.getPrePaginationRowModel().rows.length === 0}
           //export all rows, including from the next page, (still respects filtering and sorting)

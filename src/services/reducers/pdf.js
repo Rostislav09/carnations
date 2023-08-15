@@ -20,7 +20,8 @@ const pdfInitialState = {
         max: 0
       },
       colors: [],
-      brands: []
+      brands: [],
+      announcements: []
     }
   }
 }
