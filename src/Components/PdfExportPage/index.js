@@ -133,6 +133,12 @@ const PdfExportPage = () => {
           }])}>
             Mileage 60k-150k
           </Button>
+          <Button onClick={() => table.setColumnFilters(prev => [...prev.filter(f => f.id !== 'announcements'), {
+            id: 'announcements',
+            value: ['123','Prior Fleet','Prior Taxi','Prior Lease','Prior Rental','Short Term Rental','Prior Government Use','Theft Recovery','Safety Concern','Safety Brakes','Structural Damage','Structural Alterations','Perforated Rust','Title Absent','Altered Suspension','After Market Accessories / Modifications','Interior Cosmetics','Exterior Cosmetics','Exterior Cosmetics/Hail','Missing Or Damaged Navi/Ent System','Repo','Paint Work','Vehicle Wrap','Major Sunroof Defect','Carmax Loaner','Carmax Executive Vehicle','Title Absent - No Cash Accepted','Excessive Water Intrusion (Sunroof/Windows Inop)','Previous Canadian','Missing Catalytic Conv','None','Brakes','Suspension Needs Service','Logo / Decal Discrepancy','Front Tow Hitch']
+          }])}>
+            Announcements
+          </Button>
           <Button onClick={() => table.resetColumnFilters()}>
             Reset Filters
           </Button>
