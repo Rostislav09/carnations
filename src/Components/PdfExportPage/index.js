@@ -90,10 +90,20 @@ const PdfExportPage = () => {
         size: 100
       },
       {
-        header: 'Announcements',
+        header: 'Announcements (exclude)',
         accessorKey: 'announcements',
         size: 220,
         filterVariant: 'multi-select',
+        filterFn: (row, id, filterValue) => {
+          const values = row.getValue(id).split(', ')
+          const filters = filterValue
+          for (let i = 0; i < filters.length; i++) {
+            if (values.includes(filters[i])) {
+              return false
+            }
+          }
+          return true
+        },
         mantineFilterMultiSelectProps: {
           data: pdfData.options.announcements
         }
@@ -135,7 +145,7 @@ const PdfExportPage = () => {
           </Button>
           <Button onClick={() => table.setColumnFilters(prev => [...prev.filter(f => f.id !== 'announcements'), {
             id: 'announcements',
-            value: ['123','Prior Fleet','Prior Taxi','Prior Lease','Prior Rental','Short Term Rental','Prior Government Use','Theft Recovery','Safety Concern','Safety Brakes','Structural Damage','Structural Alterations','Perforated Rust','Title Absent','Altered Suspension','After Market Accessories / Modifications','Interior Cosmetics','Exterior Cosmetics','Exterior Cosmetics/Hail','Missing Or Damaged Navi/Ent System','Repo','Paint Work','Vehicle Wrap','Major Sunroof Defect','Carmax Loaner','Carmax Executive Vehicle','Title Absent - No Cash Accepted','Excessive Water Intrusion (Sunroof/Windows Inop)','Previous Canadian','Missing Catalytic Conv','None','Brakes','Suspension Needs Service','Logo / Decal Discrepancy','Front Tow Hitch']
+            value: ['Missing Or Deployed Airbag Per Evdh','Missing And/Or Currently Deployed Airbag','Rebuilt History','Major Damage History','Salvage History','Title Branded - Lemon Law/Mfg. Buyback','Title Branded - Rebuilt/Reconstructed','Title Branded - Salvage','Title Branded - Not Actual Miles','Total Loss History','Major Engine Defect','Title Branded - Miles Exempt','Major Transmission Defect','Not Actual Miles','Odometer Inop','No Runner','Major Mech Conv\'T Top Defect','Missing Seats','Electrical Issue','Major Transfer Case Defect','Safety Concern - Gas Leak','Major Air Ride Suspension Defect','Exceeds Mechanical Limits','Major Differential Defect','Manufacturer Buyback/Lemon','Color Change']
           }])}>
             Announcements
           </Button>
